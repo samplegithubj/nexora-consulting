@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Nexora ICT Consulting</title>
+    <meta name="description" content="Terms of Service for Nexora ICT Consulting">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="navbar container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-link">
+                    <svg class="logo-icon" width="40" height="40" viewBox="0 0 40 40">
+                        <path d="M10,10 L10,30 L30,30 L30,10" fill="none" stroke="#0A2463" stroke-width="3"/>
+                        <path d="M10,10 L30,30" fill="none" stroke="#0A2463" stroke-width="3"/>
+                        <circle cx="10" cy="10" r="3" fill="#00E8FF"/>
+                        <circle cx="10" cy="30" r="3" fill="#00E8FF"/>
+                        <circle cx="30" cy="10" r="3" fill="#00E8FF"/>
+                        <circle cx="30" cy="30" r="3" fill="#00E8FF"/>
+                    </svg>
+                    <div class="logo-text">
+                        <span class="logo-primary">NEXORA</span>
+                        <span class="logo-secondary">ICT Consulting</span>
+                    </div>
+                </a>
+            </div>
+            <a href="index.html" class="btn btn-outline">Back to Home</a>
+        </nav>
+    </header>
+
+    <!-- Terms of Service Content -->
+    <section class="section legal-section">
+        <div class="container">
+            <div class="legal-content">
+                <h1>Terms of Service</h1>
+                <p class="legal-date">Effective Date: <span id="current-date">March 2024</span></p>
+                
+                <div class="legal-text">
+                    <h2>1. Acceptance of Terms</h2>
+                    <p>By accessing and using the Nexora ICT Consulting website ("Service"), you accept and agree to be bound by these Terms of Service.</p>
+                    
+                    <h2>2. Services Provided</h2>
+                    <p>Nexora ICT Consulting provides ICT consulting services including:</p>
+                    <ul>
+                        <li>Cybersecurity solutions</li>
+                        <li>Cloud migration and management</li>
+                        <li>Software engineering</li>
+                        <li>Network infrastructure</li>
+                        <li>Data analytics</li>
+                        <li>Managed IT services</li>
+                    </ul>
+                    
+                    <h2>3. User Responsibilities</h2>
+                    <p>As a user of our Service, you agree to:</p>
+                    <ul>
+                        <li>Provide accurate information</li>
+                        <li>Use the Service lawfully</li>
+                        <li>Not attempt to compromise security</li>
+                        <li>Not use automated systems to access the Service</li>
+                    </ul>
+                    
+                    <h2>4. Intellectual Property</h2>
+                    <p>All content on this website, including text, graphics, logos, and software, is the property of Nexora ICT Consulting and is protected by copyright laws.</p>
+                    
+                    <h2>5. Limitation of Liability</h2>
+                    <p>Nexora ICT Consulting shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of the Service.</p>
+                    
+                    <h2>6. Service Modifications</h2>
+                    <p>We reserve the right to modify or discontinue the Service at any time without notice.</p>
+                    
+                    <h2>7. Governing Law</h2>
+                    <p>These Terms shall be governed by the laws of Kenya, without regard to its conflict of law provisions.</p>
+                    
+                    <h2>8. Contact Information</h2>
+                    <p>For questions about these Terms, contact:</p>
+                    <address>
+                        <strong>Nexora ICT Consulting</strong><br>
+                        Lion Place, Westlands<br>
+                        Nairobi, Kenya<br>
+                        Email: <a href="mailto:legal@nexora-ict.com">legal@nexora-ict.com</a><br>
+                        Phone: <a href="tel:+254795576429">+254(0)795576429</a>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; <span id="current-year">2025</span> Nexora ICT Consulting. All rights reserved.</p>
+                </div>
+                <div class="footer-back-to-top">
+                    <a href="#" class="back-to-top">
+                        <i class="fas fa-arrow-up"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long'
+        });
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

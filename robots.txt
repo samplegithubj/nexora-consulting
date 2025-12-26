@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /search/
+
+Sitemap: https://nexora-ict.com/sitemap.xml
