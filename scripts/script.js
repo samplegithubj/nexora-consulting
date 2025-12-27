@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===== Theme Toggle Functionality =====
+// ===== Theme Toggle Functionality =====
 function initializeThemeToggle() {
     if (!themeToggle || !themeIcon) return;
     
@@ -110,29 +111,31 @@ function initializeThemeToggle() {
     const savedTheme = localStorage.getItem('theme');
     
     // Set initial theme
+    const setTheme = (isDark) => {
+        if (isDark) {
+            document.body.classList.add('dark-mode');
+            document.body.classList.remove('light-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        } else {
+            document.body.classList.add('light-mode');
+            document.body.classList.remove('dark-mode');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+    };
+    
     if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        document.body.classList.remove('light-mode');
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
+        setTheme(true);
     } else if (savedTheme === 'light') {
-        document.body.classList.add('light-mode');
-        document.body.classList.remove('dark-mode');
-        themeIcon.classList.remove('fa-sun');
-        themeIcon.classList.add('fa-moon');
+        setTheme(false);
     } else if (prefersDarkScheme.matches) {
         // No saved preference, use system preference
-        document.body.classList.add('dark-mode');
-        document.body.classList.remove('light-mode');
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
+        setTheme(true);
         localStorage.setItem('theme', 'dark');
     } else {
         // Default to light mode
-        document.body.classList.add('light-mode');
-        document.body.classList.remove('dark-mode');
-        themeIcon.classList.remove('fa-sun');
-        themeIcon.classList.add('fa-moon');
+        setTheme(false);
         localStorage.setItem('theme', 'light');
     }
     
@@ -173,11 +176,13 @@ function initializeThemeToggle() {
                 document.body.classList.remove('light-mode');
                 themeIcon.classList.remove('fa-moon');
                 themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
             } else {
                 document.body.classList.remove('dark-mode');
                 document.body.classList.add('light-mode');
                 themeIcon.classList.remove('fa-sun');
                 themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
             }
         }
     });
