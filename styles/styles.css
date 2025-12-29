@@ -2920,3 +2920,389 @@ body.dark-mode .contact-method {
     background: linear-gradient(135deg, #2d4a9e 0%, #3b5ab8 100%);
     box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
 }
+/* ===== LANGUAGE TRANSLATOR STYLES ===== */
+.language-translator {
+    position: fixed;
+    bottom: 90px;
+    right: 30px;
+    z-index: var(--z-tooltip);
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: 1.5s;
+}
+
+.custom-translator {
+    position: relative;
+}
+
+.translator-btn {
+    background-color: var(--navy);
+    color: var(--white);
+    border: 2px solid var(--cyan);
+    border-radius: var(--radius-full);
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-md);
+    min-width: 140px;
+    justify-content: space-between;
+}
+
+.translator-btn:hover {
+    background-color: var(--cyan);
+    color: var(--navy);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.translator-btn.active {
+    background-color: var(--cyan);
+    color: var(--navy);
+}
+
+.translator-btn i:first-child {
+    font-size: 1.1rem;
+}
+
+.translator-btn i:last-child {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.translator-btn.active i:last-child {
+    transform: rotate(180deg);
+}
+
+.translator-dropdown {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    min-width: 180px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s var(--ease-out-quart);
+    margin-bottom: 10px;
+}
+
+.translator-dropdown.show {
+    max-height: 400px;
+    opacity: 1;
+    transform: translateY(0);
+    overflow-y: auto;
+}
+
+.language-option {
+    width: 100%;
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: var(--transition-base);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.language-option:hover {
+    background-color: var(--light-blue);
+    color: var(--navy);
+}
+
+.language-option:active {
+    background-color: var(--cyan-light);
+}
+
+/* Hide default Google Translate elements */
+.goog-te-banner-frame {
+    display: none !important;
+}
+
+.goog-te-gadget {
+    font-size: 0 !important;
+}
+
+.goog-te-gadget span {
+    display: none !important;
+}
+
+.goog-te-gadget-simple {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+/* Dark mode styles */
+body.dark-mode .translator-btn {
+    background-color: var(--cyan);
+    color: var(--navy);
+}
+
+body.dark-mode .translator-btn:hover {
+    background-color: var(--navy);
+    color: var(--cyan);
+}
+
+body.dark-mode .translator-dropdown {
+    background: var(--dark-bg);
+    border: 1px solid var(--navy-light);
+}
+
+body.dark-mode .language-option {
+    color: var(--white);
+}
+
+body.dark-mode .language-option:hover {
+    background-color: var(--navy-light);
+    color: var(--cyan);
+}
+
+/* Responsive styles for translator */
+@media (max-width: 768px) {
+    .language-translator {
+        bottom: 80px;
+        right: 20px;
+    }
+    
+    .translator-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+        min-width: 120px;
+    }
+    
+    .translator-dropdown {
+        min-width: 160px;
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-translator {
+        bottom: 70px;
+        right: 15px;
+    }
+    
+    .translator-btn span {
+        display: none;
+    }
+    
+    .translator-btn {
+        min-width: auto;
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        justify-content: center;
+    }
+    
+    .translator-btn i:first-child {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+    
+    .translator-btn i:last-child {
+        display: none;
+    }
+    
+    .translator-dropdown {
+        right: -20px;
+        min-width: 150px;
+    }
+}
+/* ===== ENHANCED UX/UI STYLES ===== */
+
+/* Improved focus states for accessibility */
+:focus-visible {
+    outline: 3px solid var(--cyan);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+/* Better selection colors */
+::selection {
+    background-color: var(--cyan);
+    color: var(--navy);
+}
+
+::-moz-selection {
+    background-color: var(--cyan);
+    color: var(--navy);
+}
+
+/* Loading animation improvements */
+.preloader {
+    background: var(--navy);
+    z-index: var(--z-modal);
+}
+
+.preloader-content {
+    text-align: center;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, var(--cyan), var(--cyan-light));
+    height: 4px;
+    width: 0;
+    animation: progress 2s ease-in-out forwards;
+    border-radius: 2px;
+}
+
+@keyframes progress {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+/* Enhanced card hover effects */
+.service-card, .case-study, .testimonial-card {
+    transition: transform 0.3s var(--ease-out-quart), 
+                box-shadow 0.3s var(--ease-out-quart);
+}
+
+.service-card:hover, .case-study:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Improved form styles */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 3px rgba(0, 232, 255, 0.1);
+}
+
+.form-group.error input,
+.form-group.error textarea,
+.form-group.error select {
+    border-color: #f44336;
+    background-color: rgba(244, 67, 54, 0.05);
+}
+
+.error-message {
+    color: #f44336;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: none;
+}
+
+/* Enhanced button animations */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Dark mode improvements */
+body.dark-mode {
+    color-scheme: dark;
+}
+
+body.dark-mode img {
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+body.dark-mode img:hover {
+    opacity: 1;
+}
+
+/* Print styles */
+@media print {
+    .theme-toggle,
+    .language-translator,
+    .mobile-menu-btn,
+    .nav-cta,
+    .footer-newsletter {
+        display: none !important;
+    }
+    
+    .hero-visual,
+    .solution-image {
+        display: none !important;
+    }
+    
+    * {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+    
+    a {
+        text-decoration: underline;
+        color: blue !important;
+    }
+    
+    a[href^="http"]::after {
+        content: " (" attr(href) ")";
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --cyan: #00ffff;
+        --navy: #000080;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .service-card:hover,
+    .case-study:hover {
+        transform: none;
+    }
+    
+    .btn:hover {
+        transform: none;
+    }
+    
+    .nav-link:hover {
+        background: transparent;
+    }
+}

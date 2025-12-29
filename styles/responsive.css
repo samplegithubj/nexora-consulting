@@ -1076,3 +1076,52 @@
         font-size: 1rem;
     }
 }
+/* ===== LANGUAGE TRANSLATOR RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .language-translator {
+        bottom: 85px;
+        right: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .language-translator {
+        bottom: 80px;
+        right: 20px;
+    }
+    
+    .translator-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .language-translator {
+        bottom: 75px;
+        right: 15px;
+    }
+    
+    .translator-btn {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+    
+    .translator-dropdown {
+        min-width: 140px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+    .language-translator {
+        bottom: 60px;
+        right: 15px;
+    }
+    
+    .translator-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}

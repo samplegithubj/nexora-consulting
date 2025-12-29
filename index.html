@@ -141,6 +141,18 @@
             to { opacity: 1; }
         }
     </style>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,es,fr,de,zh-CN,ru,ar,ja,ko,pt,sw',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                disableAutoTranslation: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
     <!-- Preloader -->
@@ -170,6 +182,7 @@
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
         <i class="fas fa-moon" id="theme-icon"></i>
     </button>
+    <div id="google_translate_element" class="language-translator"></div>
 
     <!-- Navigation -->
     <header class="header" role="banner">
