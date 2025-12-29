@@ -1,5 +1,5 @@
 // Nexora Consulting - Complete JavaScript Functionality
-// Updated with Theme Toggle and Formspree Integration
+// Updated with Theme Toggle, Formspree Integration, and Scroll-Hide for Floating Buttons
 
 // ===== DOM Elements =====
 const preloader = document.querySelector('.preloader');
@@ -37,6 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeServiceCards();
     initializeThemeToggle();
     
+    // Initialize scroll-hide for floating buttons
+    initializeScrollHide();
+    
     // Initialize Formspree form handling
     initializeFormspreeForm();
     
@@ -50,7 +53,133 @@ document.addEventListener('DOMContentLoaded', () => {
     checkFormspreeSuccess();
 });
 
-// ===== Theme Toggle Functionality =====
+// ===== Scroll Hide for Floating Buttons =====
+function initializeScrollHide() {
+    const floatingButtons = [themeToggle, document.querySelector('.language-translator')];
+    let lastScrollY = window.scrollY;
+    let isHidden = false;
+    let scrollTimeout;
+    
+    // Only apply on smaller screens
+    const isSmallScreen = () => window.innerWidth < 1024;
+    
+    const hideButtons = () => {
+        if (!isSmallScreen()) return;
+        
+        floatingButtons.forEach(button => {
+            if (button) {
+                button.classList.add('hidden-on-scroll');
+            }
+        });
+        isHidden = true;
+    };
+    
+    const showButtons = () => {
+        floatingButtons.forEach(button => {
+            if (button) {
+                button.classList.remove('hidden-on-scroll');
+            }
+        });
+        isHidden = false;
+    };
+    
+    const handleScroll = () => {
+        if (!isSmallScreen()) {
+            // Always show buttons on large screens
+            showButtons();
+            return;
+        }
+        
+        const currentScrollY = window.scrollY;
+        const scrollDelta = currentScrollY - lastScrollY;
+        
+        // Clear any pending timeout
+        if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
+        }
+        
+        // Hide buttons when scrolling down
+        if (scrollDelta > 5 && currentScrollY > 100 && !isHidden) {
+            hideButtons();
+        }
+        
+        // Show buttons when scrolling up or at top
+        if (scrollDelta < -5 || currentScrollY < 100) {
+            showButtons();
+            
+            // Auto-hide after 3 seconds of inactivity
+            scrollTimeout = setTimeout(() => {
+                if (currentScrollY > 100 && !isUserInteracting()) {
+                    hideButtons();
+                }
+            }, 3000);
+        }
+        
+        lastScrollY = currentScrollY;
+    };
+    
+    // Check if user is interacting with buttons
+    const isUserInteracting = () => {
+        return floatingButtons.some(button => 
+            button && (button.matches(':hover') || button.matches(':focus'))
+        );
+    };
+    
+    // Show buttons when hovering near them
+    const handleMouseMove = (e) => {
+        if (!isSmallScreen() || !isHidden) return;
+        
+        // Show buttons if mouse is near right edge of screen
+        if (window.innerWidth - e.clientX < 100 && e.clientY > window.innerHeight - 150) {
+            showButtons();
+            
+            // Auto-hide after 3 seconds
+            setTimeout(() => {
+                if (!isUserInteracting() && window.scrollY > 100) {
+                    hideButtons();
+                }
+            }, 3000);
+        }
+    };
+    
+    // Show buttons when touching near bottom-right corner on mobile
+    const handleTouchStart = (e) => {
+        if (!isSmallScreen() || !isHidden) return;
+        
+        const touch = e.touches[0];
+        if (window.innerWidth - touch.clientX < 100 && touch.clientY > window.innerHeight - 150) {
+            showButtons();
+        }
+    };
+    
+    // Initialize scroll hide
+    window.addEventListener('scroll', debounce(handleScroll, 100));
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('touchstart', handleTouchStart);
+    
+    // Show buttons when any floating button is clicked or focused
+    floatingButtons.forEach(button => {
+        if (button) {
+            button.addEventListener('click', () => {
+                showButtons();
+                // Keep visible for 5 seconds after interaction
+                setTimeout(() => {
+                    if (!isUserInteracting() && window.scrollY > 100) {
+                        hideButtons();
+                    }
+                }, 5000);
+            });
+            
+            button.addEventListener('focus', () => {
+                showButtons();
+            });
+        }
+    });
+    
+    // Initial check
+    handleScroll();
+}
+
 // ===== Theme Toggle Functionality =====
 function initializeThemeToggle() {
     if (!themeToggle || !themeIcon) return;
@@ -100,6 +229,13 @@ function initializeThemeToggle() {
         body.dark-mode .theme-toggle:hover {
             background-color: var(--navy);
             color: var(--cyan);
+        }
+        
+        /* Scroll hide animation */
+        .theme-toggle.hidden-on-scroll {
+            transform: translateY(100px);
+            opacity: 0;
+            pointer-events: none;
         }
     `;
     document.head.appendChild(style);
@@ -977,6 +1113,7 @@ if (typeof module !== 'undefined' && module.exports) {
         initializeMobileMenu,
         initializeFormspreeForm,
         initializeThemeToggle,
+        initializeScrollHide,
         showNotification,
         trackEvent,
         debounce

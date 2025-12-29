@@ -1125,3 +1125,123 @@
         font-size: 0.8rem;
     }
 }
+/* ===== FLOATING BUTTONS RESPONSIVE ===== */
+
+/* Hide translator on small screens (use floating version) */
+@media (max-width: 1024px) {
+    .language-translator {
+        display: block !important;
+        position: fixed !important;
+        bottom: 90px !important;
+        right: 30px !important;
+        margin: 0 !important;
+    }
+    
+    /* Ensure theme toggle is properly positioned */
+    .theme-toggle {
+        position: fixed !important;
+        bottom: 30px !important;
+        right: 30px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .language-translator {
+        bottom: 85px !important;
+        right: 25px !important;
+    }
+    
+    .theme-toggle {
+        bottom: 25px !important;
+        right: 25px !important;
+    }
+    
+    .translator-btn,
+    .theme-toggle {
+        width: 45px !important;
+        height: 45px !important;
+    }
+    
+    .translator-btn span {
+        display: none !important;
+    }
+    
+    .translator-btn i:last-child {
+        display: none !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .language-translator {
+        bottom: 80px !important;
+        right: 20px !important;
+    }
+    
+    .theme-toggle {
+        bottom: 20px !important;
+        right: 20px !important;
+    }
+    
+    .translator-btn,
+    .theme-toggle {
+        width: 40px !important;
+        height: 40px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-translator {
+        bottom: 75px !important;
+        right: 15px !important;
+    }
+    
+    .theme-toggle {
+        bottom: 15px !important;
+        right: 15px !important;
+    }
+    
+    .translator-btn,
+    .theme-toggle {
+        width: 35px !important;
+        height: 35px !important;
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+    .language-translator {
+        bottom: 60px !important;
+        right: 15px !important;
+    }
+    
+    .theme-toggle {
+        bottom: 15px !important;
+        right: 15px !important;
+    }
+    
+    .translator-btn,
+    .theme-toggle {
+        width: 30px !important;
+        height: 30px !important;
+    }
+}
+
+/* Ensure buttons don't interfere with content on very small screens */
+@media (max-width: 374px) {
+    .language-translator {
+        bottom: 70px !important;
+        right: 10px !important;
+    }
+    
+    .theme-toggle {
+        bottom: 10px !important;
+        right: 10px !important;
+    }
+    
+    .translator-btn,
+    .theme-toggle {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 0.8rem !important;
+    }
+}
